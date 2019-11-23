@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
-import two.x.two.entity.NerResponce;
-import two.x.two.entity.Word;
+import two.x.two.dto.NerResponceTo;
+import two.x.two.dto.WordTo;
 
 import java.net.URI;
 import java.util.List;
@@ -28,13 +28,13 @@ public class NamesService {
         map.add("text", "text");
     }
 
-    public List<Word> getWords(String text) {
+    public List<WordTo> getWords(String text) {
         if (text.length() > MAX_TEXT_SIZE) {
             text = text.substring(0, MAX_TEXT_SIZE);
         }
         map.add("text", text);
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
-        return restTemplate.postForEntity(uri, request, NerResponce.class)
+        return restTemplate.postForEntity(uri, request, NerResponceTo.class)
                 .getBody().getWords();
     }
 }
