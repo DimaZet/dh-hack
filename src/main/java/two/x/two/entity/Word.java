@@ -47,4 +47,14 @@ public class Word {
     public void setV(String v) {
         this.v = v;
     }
+
+    @Override
+    public String toString() {
+        return "Word{" +
+                "i=" + i +
+                ", l=" + l +
+                ", ner='" + ner + '\'' +
+                ", v='" + v + '\'' +
+                '}';
+    }
 }
