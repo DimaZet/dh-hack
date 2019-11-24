@@ -1,4 +1,4 @@
-package two.x.two.dto;
+package two.x.two.client.dto;
 
 public class WordTo {
     int i;

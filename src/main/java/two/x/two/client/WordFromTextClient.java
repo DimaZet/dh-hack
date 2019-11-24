@@ -1,20 +1,17 @@
-package two.x.two.service;
-
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.stereotype.Service;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestTemplate;
-import two.x.two.dto.NerResponceTo;
-import two.x.two.dto.WordTo;
+package two.x.two.client;
 
 import java.net.URI;
 import java.util.List;
 
-@Service
-public class NamesService {
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
+import two.x.two.client.dto.NerResponceTo;
+import two.x.two.client.dto.WordTo;
+
+public class WordFromTextClient {
 
     public static final int MAX_TEXT_SIZE = 1000;
 
@@ -23,9 +20,20 @@ public class NamesService {
     HttpHeaders headers = new HttpHeaders();
     MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
 
-    public NamesService() {
-        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-        map.add("text", "text");
+    public HttpHeaders getHeaders() {
+        return headers;
+    }
+
+    public void setHeaders(HttpHeaders headers) {
+        this.headers = headers;
+    }
+
+    public MultiValueMap<String, String> getMap() {
+        return map;
+    }
+
+    public void setMap(MultiValueMap<String, String> map) {
+        this.map = map;
     }
 
     public List<WordTo> getWords(String text) {
